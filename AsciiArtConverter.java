@@ -37,9 +37,10 @@ public class AsciiArtConverter {
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
                 int pixel = infoProvider.getPixel(j, i);
-                asciiData[i][j] = getCharacterForPixel(this.grayscaler(pixel));
+                asciiData[i][j] = getCharacterForPixel(this.grayscaler.grayScale(pixel));
             }
         }
+        return asciiData;
     }
 
     /**
@@ -51,7 +52,9 @@ public class AsciiArtConverter {
      */
     protected char getCharacterForPixel(double pixel) {
 	// TODO - implement this
-        return ASCII_ART_LOOKUP_TABLE[Math.ceil(pixel / 256 * (ASCII_ART_LOOKUP_TABLE.length - 1)];
+    	double scale = pixel / 256.0;
+    	int index = (int)Math.ceil(scale * (ASCII_ART_LOOKUP_TABLE.length - 1));
+        return ASCII_ART_LOOKUP_TABLE[index];
     }
 
 }

@@ -28,9 +28,10 @@ public class AnimatedAsciiArt {
             try {
                 imgInfoProviders[i] = convert(files[i]);
             }catch(Exception ex) {
-                printf("File Read Error: " + files[i]);
+                System.out.print("File Read Error: " + files[i]);
             }
         }
+        return imgInfoProviders;
     }
 
     protected static ImageInfoProvider convert(String file) {
@@ -70,8 +71,8 @@ public class AnimatedAsciiArt {
         for (int i = 0; i < this.providers.length; i++) {
             if (this.providers[i] != null)
                 this.printer.print(this.converter.convert(this.providers[i]));
+            this.sleep();
         }
-        sleep();
     }
 
     protected void sleep() {
