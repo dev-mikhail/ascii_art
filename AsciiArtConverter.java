@@ -30,6 +30,16 @@ public class AsciiArtConverter {
      */
     public char[][] convert(ImageInfoProvider infoProvider) {
 	// TODO - implement this
+        int w, h;
+        w = infoProvider.getWidth();
+        h = infoProvider.getHeight();
+        char asciiData[][] = new char[w][h];
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                int pixel = infoProvider.getPixel(j, i);
+                asciiData[i][j] = getCharacterForPixel(this.grayscaler(pixel));
+            }
+        }
     }
 
     /**
@@ -41,6 +51,7 @@ public class AsciiArtConverter {
      */
     protected char getCharacterForPixel(double pixel) {
 	// TODO - implement this
+        return ASCII_ART_LOOKUP_TABLE[Math.ceil(pixel / 256 * (ASCII_ART_LOOKUP_TABLE.length - 1)];
     }
 
 }

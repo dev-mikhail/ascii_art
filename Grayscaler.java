@@ -14,9 +14,9 @@ public class Grayscaler {
      */
     public double grayScale(int pixel) {
 	// TODO - implement this
-        int red = pixel & 0xFF000000;
-        int green = pixel & 0x00FF0000;
-        int blue = pixel & 0x0000FF00;
+        int red = pixel & 0x00FF0000;
+        int green = pixel & 0x00FF00;
+        int blue = pixel & 0x000000FF;
         return 0.21 * red + 0.72 * gree + 0.07 * blue;
     }
 

@@ -11,6 +11,13 @@ public class AsciiArtPrinter {
      */
     public void print(char[][] asciiArt) {
 	// TODO - implement this
+        clearScreen();
+        for (int i = 0; i < asciiArt.length; i++) {
+            for (int j = 0; j < asciiArt[i].length; j++){
+                System.out.print(asciiArt[i][j]);
+            }
+            System.out.print("\n");
+        }
     }
 
     protected void clearScreen() {
